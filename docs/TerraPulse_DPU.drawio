@@ -1,0 +1,136 @@
+<mxfile host="app.diagrams.net" modified="2026-11-10T11:44:00.000Z" agent="Antigravity" version="24.7.0" type="device">
+  <diagram id="terrapulse-use-case" name="Diagram primerov uporabe (DPU)">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- System Boundary Box -->
+        <mxCell id="sys_boundary" value="Sistem TerraPulse (Flutter + FastAPI + Mosquitto/Telegraf + TimescaleDB)" style="swimlane;whiteSpace=wrap;html=1;startSize=35;fillColor=#F8FBF9;strokeColor=#2E5A44;fontStyle=1;fontSize=15;rounded=1;arcSize=4;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="330" y="60" width="660" height="760" as="geometry" />
+        </mxCell>
+
+        <!-- Use Cases inside System Boundary -->
+        <mxCell id="uc1" value="PU1: Pregled 3D ambientnega vrta in seznama rastlin" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E6F4EA;strokeColor=#2E7D32;fontSize=13;fontStyle=1;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="70" y="60" width="290" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc1_sub" value="PU1.1: Prikaz 3D stanja rastlin&#xa;(zdrava / žejna / osvetljenost)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2E7D32;fontSize=12;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="390" y="60" width="240" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc2" value="PU2: Pregled podrobnosti rastline, optimalnih meja&#xa;in zgodovinskih grafov (24h / 7d / 30d)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E6F4EA;strokeColor=#2E7D32;fontSize=13;fontStyle=1;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="70" y="165" width="320" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc3" value="PU3: Čarovnik za dodajanje rastline: izbira Wi-Fi senzorja&#xa;in samodejna MQTT konfiguracija v ozadju" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E6F4EA;strokeColor=#2E7D32;fontSize=13;fontStyle=1;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="70" y="275" width="310" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc3_sub" value="PU3.1: Izbira vrste (OpenPlantbook), poimenovanje&#xa;rastline in shranjevanje v Hive" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2E7D32;fontSize=12;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="400" y="275" width="245" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc4" value="PU4: Samodejni zajem standardiziranih MQTT meritev&#xa;prek Telegraf agenta v TimescaleDB" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E0F2F1;strokeColor=#00695C;fontSize=13;fontStyle=1;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="70" y="385" width="320" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc5" value="PU5: Prejemanje in upravljanje potisnih opomnikov&#xa;(zalivanje, dnevni niz, nizka baterija)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#E65100;fontSize=13;fontStyle=1;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="70" y="485" width="320" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc6" value="PU6: Spremljanje dnevnega niza zdravja&#xa;(Plant Health Streaks)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=13;fontStyle=1;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="70" y="585" width="310" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc7" value="PU7: Prijava (Firebase), varnostno kopiranje,&#xa;odjava in izbris računa" style="ellipse;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;fontSize=13;fontStyle=1;" vertex="1" parent="sys_boundary">
+          <mxGeometry x="70" y="675" width="310" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Internal <<include>> relationships -->
+        <mxCell id="inc1" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="edgeStyle=none;html=1;endArrow=open;verticalAlign=bottom;dashed=1;labelBackgroundColor=none;strokeColor=#2E7D32;fontSize=11;" edge="1" parent="sys_boundary" source="uc1" target="uc1_sub">
+          <mxGeometry width="160" relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="inc2" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="edgeStyle=none;html=1;endArrow=open;verticalAlign=bottom;dashed=1;labelBackgroundColor=none;strokeColor=#2E7D32;fontSize=11;" edge="1" parent="sys_boundary" source="uc3" target="uc3_sub">
+          <mxGeometry width="160" relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="inc3" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="edgeStyle=none;html=1;endArrow=open;verticalAlign=bottom;dashed=1;labelBackgroundColor=none;strokeColor=#2E7D32;fontSize=11;" edge="1" parent="sys_boundary" source="uc2" target="uc4">
+          <mxGeometry width="160" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Primary Actors (Left) -->
+        <mxCell id="actor_local" value="Neprijavljen uporabnik&#xa;(Lokalni profil - Hive)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#E6F4EA;strokeColor=#1E7A4C;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="120" y="270" width="45" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="actor_auth" value="Prijavljen uporabnik&#xa;(Firebase Auth)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#E3F2FD;strokeColor=#1565C0;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="120" y="660" width="45" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Actor Generalization (Inheritance) -->
+        <mxCell id="gen_actor" value="deduje" style="endArrow=block;endSize=14;endFill=0;html=1;strokeColor=#1565C0;strokeWidth=2;fontSize=12;" edge="1" parent="1" source="actor_auth" target="actor_local">
+          <mxGeometry width="160" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Secondary / External System Actors (Right) -->
+        <mxCell id="actor_ha" value="IoT Senzor (npr. SOILSENS-V5W)&#xa;[Standardiziran MQTT JSON]" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#FFF3E0;strokeColor=#E65100;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="180" width="45" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="actor_opb" value="OpenPlantbook API&#xa;(Baza vrst rastlin)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#E6F4EA;strokeColor=#2E7D32;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="380" width="45" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="actor_fb" value="Firebase Authentication&#xa;(Oblačna prijava)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#E3F2FD;strokeColor=#1565C0;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="660" width="45" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Associations: Left Actors to Use Cases -->
+        <mxCell id="assoc_u_uc1" value="" style="endArrow=none;html=1;strokeColor=#2E5A44;strokeWidth=1.5;" edge="1" parent="1" source="actor_local" target="uc1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc_u_uc2" value="" style="endArrow=none;html=1;strokeColor=#2E5A44;strokeWidth=1.5;" edge="1" parent="1" source="actor_local" target="uc2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc_u_uc3" value="" style="endArrow=none;html=1;strokeColor=#2E5A44;strokeWidth=1.5;" edge="1" parent="1" source="actor_local" target="uc3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc_u_uc5" value="" style="endArrow=none;html=1;strokeColor=#2E5A44;strokeWidth=1.5;" edge="1" parent="1" source="actor_local" target="uc5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc_u_uc6" value="" style="endArrow=none;html=1;strokeColor=#2E5A44;strokeWidth=1.5;" edge="1" parent="1" source="actor_local" target="uc6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc_auth_uc7" value="" style="endArrow=none;html=1;strokeColor=#1565C0;strokeWidth=1.5;" edge="1" parent="1" source="actor_auth" target="uc7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Associations: Use Cases to Right System Actors -->
+        <mxCell id="assoc_uc1_ha" value="" style="endArrow=none;html=1;strokeColor=#E65100;strokeWidth=1.5;" edge="1" parent="1" source="uc1_sub" target="actor_ha">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc_uc3_ha" value="" style="endArrow=none;html=1;strokeColor=#E65100;strokeWidth=1.5;" edge="1" parent="1" source="uc3" target="actor_ha">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc_uc4_ha" value="" style="endArrow=none;html=1;strokeColor=#E65100;strokeWidth=1.5;" edge="1" parent="1" source="uc4" target="actor_ha">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc_uc5_ha" value="" style="endArrow=none;html=1;strokeColor=#E65100;strokeWidth=1.5;" edge="1" parent="1" source="uc5" target="actor_ha">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc_uc6_ha" value="" style="endArrow=none;html=1;strokeColor=#E65100;strokeWidth=1.5;" edge="1" parent="1" source="uc6" target="actor_ha">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc_uc3_opb" value="" style="endArrow=none;html=1;strokeColor=#2E7D32;strokeWidth=1.5;" edge="1" parent="1" source="uc3_sub" target="actor_opb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="assoc_uc7_fb" value="" style="endArrow=none;html=1;strokeColor=#1565C0;strokeWidth=1.5;" edge="1" parent="1" source="uc7" target="actor_fb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

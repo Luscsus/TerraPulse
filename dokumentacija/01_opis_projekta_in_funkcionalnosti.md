@@ -1,5 +1,14 @@
 # 1. Podrobnejši opis projekta in glavnih funkcionalnosti
 
+> **Predmet:** Vseprisotni sistemi (FERI, Univerza v Mariboru)  
+> **Projekt:** TerraPulse – Pametni sistem za spremljanje rasti in zdravja rastlin  
+> **Člani ekipe:**  
+> * **Luka Grobelnik (Vodja projekta)**  
+> * **Jan Mrkonjič**  
+> * **Matija Gusel**  
+
+---
+
 ## 1.1 Opredelitev problema in namen projekta
 Skrb za sobne in balkonske rastline pogosto temelji na ugibanju, kar vodi do dveh najpogostejših vzrokov za propad rastlin: **prekomernega ali preredkega zalivanja** ter **neustreznih mikroklimatskih pogojev** (premajhna osvetljenost oz. nizek dnevni svetlobni integral – DLI, neustrezna temperatura ter neugoden primanjkljaj parnega tlaka – VPD).
 

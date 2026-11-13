@@ -1,5 +1,14 @@
 # 3. Mockupi/prototipi najpomembnejših zaslonov in predvidena navigacija
 
+> **Predmet:** Vseprisotni sistemi (FERI, Univerza v Mariboru)  
+> **Projekt:** TerraPulse – Pametni sistem za spremljanje rasti in zdravja rastlin  
+> **Člani ekipe:**  
+> * **Luka Grobelnik (Vodja projekta)**  
+> * **Jan Mrkonjič**  
+> * **Matija Gusel**  
+
+---
+
 ## 3.1 Skupni pregled mockupov (Google Stitch – Botanical Precision)
 
 Spodnja slika prikazuje vseh šest ključnih zaslonov mobilne aplikacije **TerraPulse**, zasnovanih z minimalističnim, zračnim in preglednim vmesnikom (brez prenasičenosti s podatki):

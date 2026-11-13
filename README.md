@@ -4,9 +4,9 @@
 **TerraPulse – Pametni sistem za spremljanje rasti in zdravja rastlin**
 
 ## 2. Člani ekipe
-* [Ime in priimek 1] (vodja ekipe)
-* [Ime in priimek 2]
-* [Ime in priimek 3]
+* Luka Grobelnik (Vodja projekta)
+* Jan Mrkonjič
+* Matija Gusel
 
 ## 3. Opis projekta
 Mobilna aplikacija TerraPulse uporabnikom omogoča celovito in preprosto spremljanje rasti ter stanja sobnih rastlin s pomočjo brezžičnih senzorjev (kot je [SOILSENS-V5W](https://github.com/PricelessToolkit/SOILSENS-V5W) ali poljuben drug senzor, ki pošilja standardizirane podatke), ki merijo vlažnost in temperaturo prsti, temperaturo in vlažnost zraka, osvetljenost okolice ter stanje baterije. Rešuje pogost problem nepravilne nege rastlin (prekomerno ali preredko zalivanje ter neprimerni mikroklimatski pogoji). Namenjena je ljubiteljem rastlin, saj z vodenim čarovnikom v aplikaciji, ki v ozadju samodejno nastavi senzor, zajemom podatkov prek MQTT brokerja **Mosquitto** in agenta **Telegraf** v **TimescaleDB**, podatkovno bazo rastlin **OpenPlantbook**, 3D ambientnim virtualnim vrtom in igrifikacijo poenostavi skrb za rastline ter preprečuje njihovo propadanje.
@@ -32,13 +32,13 @@ Mobilna aplikacija TerraPulse uporabnikom omogoča celovito in preprosto spremlj
 ---
 
 ## 6. Projektna dokumentacija (Mejniki in arhitektura)
-Podrobna dokumentacija zasnove, primerov uporabe, mockupov in podatkovnega modela (Mosquitto + Telegraf + TimescaleDB + Hive) je na voljo v mapi `docs/` ter v zbirnem Word dokumentu:
+Podrobna dokumentacija zasnove, primerov uporabe, mockupov in podatkovnega modela (Mosquitto + Telegraf + TimescaleDB + Hive) je na voljo v mapi `dokumentacija/` ter v zbirnem Word dokumentu:
 
-* 📄 **[Zbirni dokument zasnove (Word .docx)](Dokumentacija_zasnove_TerraPulse_v2.docx)**
-* 📐 **[Izmenljiv Draw.io diagram primerov uporabe (.drawio)](docs/TerraPulse_DPU.drawio)**
-* 📘 **[1. Podrobnejši opis projekta in glavnih funkcionalnosti](docs/01_opis_projekta_in_funkcionalnosti.md)**
-* 📗 **[2. Diagram primerov uporabe in ključni uporabniški scenariji](docs/02_primeri_uporabe_in_scenariji.md)**
-* 📙 **[3. Mockupi najpomembnejših zaslonov in predvidena navigacija](docs/03_mockupi_in_navigacija.md)**
-* 📕 **[4. Začetni podatkovni model, TimescaleDB optimizacija in arhitektura](docs/04_podatkovni_model_in_arhitektura.md)**
+* 📄 **[Zbirni dokument zasnove (Word .docx)](dokumentacija/Dokumentacija_zasnove_TerraPulse.docx)**
+* 📐 **[Izmenljiv Draw.io diagram primerov uporabe (.drawio)](dokumentacija/TerraPulse_DPU.drawio)**
+* 📘 **[1. Podrobnejši opis projekta in glavnih funkcionalnosti](dokumentacija/01_opis_projekta_in_funkcionalnosti.md)**
+* 📗 **[2. Diagram primerov uporabe in ključni uporabniški scenariji](dokumentacija/02_primeri_uporabe_in_scenariji.md)**
+* 📙 **[3. Mockupi najpomembnejših zaslonov in predvidena navigacija](dokumentacija/03_mockupi_in_navigacija.md)**
+* 📕 **[4. Začetni podatkovni model, TimescaleDB optimizacija in arhitektura](dokumentacija/04_podatkovni_model_in_arhitektura.md)**
 * 🐧 **[Proxmox LXC skripta za namestitev (Mosquitto + Telegraf + TimescaleDB)](infra/proxmox_create_terrapulse_lxc.sh)**
 

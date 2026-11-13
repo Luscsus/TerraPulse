@@ -1,5 +1,14 @@
 # 2. Diagram primerov uporabe in ključni uporabniški scenariji
 
+> **Predmet:** Vseprisotni sistemi (FERI, Univerza v Mariboru)  
+> **Projekt:** TerraPulse – Pametni sistem za spremljanje rasti in zdravja rastlin  
+> **Člani ekipe:**  
+> * **Luka Grobelnik (Vodja projekta)**  
+> * **Jan Mrkonjič**  
+> * **Matija Gusel**  
+
+---
+
 ## 2.1 Akterji v sistemu
 1. **Neprijavljen uporabnik (Lokalni profil – Hive):** Primarni akter, ki uporablja aplikacijo brez obvezne registracije. Ima dostop do 3D vrta, seznama rastlin, podrobnosti in grafov, čarovnika za dodajanje senzorja in rastline, potisnih opomnikov ter nizov (*streaks*).
 2. **Prijavljen uporabnik (Firebase Auth):** Nadgrajen uporabnik (deduje vse pravice lokalnega uporabnika), ki je povezal svoj lokalni profil z računom **Firebase Authentication** za varnostno kopiranje v oblaku ter ima možnost odjave in izbrisa računa.

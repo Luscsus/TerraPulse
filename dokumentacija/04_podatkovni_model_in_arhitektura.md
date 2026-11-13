@@ -1,5 +1,14 @@
 # 4. Začetni podatkovni model, arhitektura in načrtovane tehnologije
 
+> **Predmet:** Vseprisotni sistemi (FERI, Univerza v Mariboru)  
+> **Projekt:** TerraPulse – Pametni sistem za spremljanje rasti in zdravja rastlin  
+> **Člani ekipe:**  
+> * **Luka Grobelnik (Vodja projekta)**  
+> * **Jan Mrkonjič**  
+> * **Matija Gusel**  
+
+---
+
 ## 4.1 Arhitektura sistema TerraPulse
 
 Arhitektura sistema je zasnovana štirislojno in je **strojno neodvisna (*hardware-agnostic*)**: poljuben IoT senzor (kot je referenčni [SOILSENS-V5W](https://github.com/PricelessToolkit/SOILSENS-V5W) ali katerikoli drug senzor na osnovi ESP32/Arduino) pošilja **standardiziran JSON paket** na **Eclipse Mosquitto MQTT Broker**, od koder agent **InfluxData Telegraf** podatke samodejno prebere in neposredno zapiše v časovno-serijsko bazo **TimescaleDB**. Zaledni sistem **FastAPI** podatke in neprekinjene agregate bere iz TimescaleDB ter jih prek REST API-ja streže večplatformski mobilni aplikaciji **Flutter** z lokalno bazo **Hive** ter oblačnima storitvama **OpenPlantbook API** in **Firebase Authentication**.

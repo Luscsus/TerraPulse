@@ -1,0 +1,27 @@
+# OS & filesystem
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Microsoft Office temporary lock files
+~$*.docx
+~$*.xlsx
+~$*.pptx
+*.tmp
+
+# IDEs & editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment variables & secrets (keep .env.example)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*firebase-adminsdk*.json
+
+# Logs
+*.log

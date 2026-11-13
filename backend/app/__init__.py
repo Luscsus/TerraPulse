@@ -1,0 +1,1 @@
+"""TerraPulse FastAPI backend package."""

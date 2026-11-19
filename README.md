@@ -1,19 +1,24 @@
 # TerraPulse – Pametni sistem za spremljanje rasti in zdravja rastlin
 
+> **Predmet:** Razvoj vseprisotnih informacijskih rešitev (RVIR · 2026/2027), FERI, Univerza v Mariboru  
+> **Faza:** Načrtovanje, prototipna dokumentacija, začetna arhitektura in CI/CD
+
 ## 1. Člani ekipe
-* Luka Grobelnik (Vodja projekta)
-* Jan Mrkonjič
-* Matija Gusel
+* **Luka Grobelnik** *(Vodja projekta)*
+* **Jan Mrkonjič**
+* **Matija Gusel**
+
+*(Podrobna začetna razdelitev odgovornosti in načrt razvoja sta opredeljena v [dokumentacija/05_nacrt_razvoja_in_odgovornosti.md](dokumentacija/05_nacrt_razvoja_in_odgovornosti.md).)*
 
 ## 2. Opis projekta
-Mobilna aplikacija TerraPulse uporabnikom omogoča celovito in preprosto spremljanje rasti ter stanja sobnih rastlin s pomočjo brezžičnih senzorjev (kot je [SOILSENS-V5W](https://github.com/PricelessToolkit/SOILSENS-V5W) ali poljuben drug senzor, ki pošilja standardizirane podatke), ki merijo vlažnost in temperaturo prsti, temperaturo in vlažnost zraka, osvetljenost okolice ter stanje baterije. Rešuje pogost problem nepravilne nege rastlin (prekomerno ali preredko zalivanje ter neprimerni mikroklimatski pogoji). Namenjena je ljubiteljem rastlin, saj z vodenim čarovnikom v aplikaciji, ki v ozadju samodejno nastavi senzor, zajemom podatkov prek MQTT brokerja **Mosquitto** in agenta **Telegraf** v **TimescaleDB**, podatkovno bazo rastlin **OpenPlantbook**, 3D ambientnim virtualnim vrtom in igrifikacijo poenostavi skrb za rastline ter preprečuje njihovo propadanje.
+Mobilna aplikacija **TerraPulse** uporabnikom omogoča celovito in preprosto spremljanje rasti ter stanja sobnih rastlin s pomočjo brezžičnih senzorjev (kot je [SOILSENS-V5W](https://github.com/PricelessToolkit/SOILSENS-V5W) ali poljuben drug senzor, ki pošilja standardizirane podatke), ki merijo vlažnost in temperaturo prsti, temperaturo in vlažnost zraka, osvetljenost okolice ter stanje baterije. Rešuje pogost problem nepravilne nege rastlin (prekomerno ali preredko zalivanje ter neprimerni mikroklimatski pogoji). Namenjena je ljubiteljem rastlin, saj z vodenim čarovnikom v aplikaciji, ki v ozadju samodejno nastavi senzor, zajemom podatkov prek MQTT brokerja **Mosquitto** in agenta **Telegraf** v **TimescaleDB**, podatkovno bazo rastlin **OpenPlantbook**, 3D ambientnim virtualnim vrtom in igrifikacijo poenostavi skrb za rastline ter preprečuje njihovo propadanje.
 
 ## 3. Glavne funkcionalnosti
 * **3D Ambientni virtualni vrt in seznam rastlin:** pregleden 3D prikaz vrta z ambientom, ki odraža stanje rastlin (ali začetni zaslon s pozivom k dodajanju prve rastline, če je vrt še prazen), ter čist seznam vseh rastlin s hitrimi statusi zdravja.
 * **Voden čarovnik za dodajanje rastline in samodejna konfiguracija senzorja:** vodniček uporabnika z ilustracijami vodi skozi izbiro Wi-Fi točke senzorja in vnos domačega Wi-Fi gesla, medtem ko aplikacija v ozadju sama ustvari konfiguracijo (MQTT broker, nastavitve in enolični ID), shrani rastlino ter omogoči izbiro vrste iz OpenPlantbooka in poimenovanje.
 * **Podrobnosti rastline, optimalne meje in zgodovinski grafi (24h / 7d / 30d):** prikaz trenutnih meritev v primerjavi z optimalnimi vrednostmi iz baze OpenPlantbook ter interaktivni časovni grafi iz TimescaleDB neprekinjenih agregatov.
 * **Standardiziran MQTT zajem (Mosquitto + Telegraf → TimescaleDB):** poljuben senzor pošilja standardizirane podatke na Mosquitto MQTT broker, od koder jih Telegraf samodejno zapisuje neposredno v časovno-serijsko bazo TimescaleDB.
-* **Pametna potisna obvestila in sistem nizov (angl. streaks):** obveščanje uporabnika ob nizki vlažnosti prsti ali prazni bateriji ter beleženje zaporednih dni optimalnega zdravja vrta.
+* **Pametna potisna obvestila in sistem nizov (angl. *streaks*):** obveščanje uporabnika ob nizki vlažnosti prsti ali prazni bateriji ter beleženje zaporednih dni optimalnega zdravja vrta.
 * **Lokalni profil in upravljanje računa (Hive + Firebase Auth):** takojšnja uporaba z lokalnim profilom na napravi ter možnost prijave/sinhronizacije prek Firebase Auth, odjave in izbrisa računa.
 
 ## 4. Predvidene tehnologije
@@ -28,14 +33,54 @@ Mobilna aplikacija TerraPulse uporabnikom omogoča celovito in preprosto spremlj
 
 ---
 
-## 5. Projektna dokumentacija (Mejniki in arhitektura)
-Podrobna dokumentacija zasnove, primerov uporabe, mockupov in podatkovnega modela (Mosquitto + Telegraf + TimescaleDB + Hive) je na voljo v mapi `dokumentacija/` ter v zbirnem Word dokumentu:
+## 5. Struktura repozitorija
+
+```text
+TerraPulse/
+├── .github/workflows/       # GitHub Actions CI/CD (Backend FastAPI + Flutter Android)
+├── app/                     # Mobilna aplikacija Flutter (Android)
+├── backend/                 # Zaledni REST API (FastAPI + pytest + Dockerfile)
+├── dokumentacija/           # Projektna in prototipna dokumentacija (.md, .docx, mockupi, diagrami)
+├── infra/                   # Proxmox LXC namestitvena skripta (Mosquitto + Telegraf + TimescaleDB)
+├── AGENTS.md                # Tehnični vodič arhitekture in podatkovnega protokola
+└── README.md                # Predstavitev projekta in kazalo dokumentacije
+```
+
+---
+
+## 6. Lokalni zagon in CI/CD
+
+### Zaledni sistem (`backend/`)
+```bash
+cd backend
+python -m venv .venv
+# Windows: .venv\Scripts\activate | Linux/macOS: source .venv/bin/activate
+pip install -r requirements.txt
+pytest -v
+uvicorn app.main:app --reload --port 8000
+```
+
+### Mobilna aplikacija (`app/`)
+```bash
+cd app
+flutter pub get
+flutter analyze
+flutter test
+```
+
+### GitHub Actions Workflows
+* **[Backend CI/CD (FastAPI)](.github/workflows/backend-ci-cd.yml):** ob vsakem `push`/`pull_request` v `backend/` zažene enotske teste (`pytest`), ob združitvi v `main` zgradi in objavi Docker sliko v GHCR (`ghcr.io/luscsus/terrapulse-api`), po aktivaciji pa izvede tudi namestitev na Proxmox LXC.
+* **[Flutter CI (Analyze, Test & Build APK)](.github/workflows/flutter-ci.yml):** ob vsakem `push`/`pull_request` v `app/` izvede `flutter pub get`, statično analizo (`flutter analyze`), teste (`flutter test`) ter na veji `main` zgradi in objavi Android APK.
+
+---
+
+## 7. Projektna dokumentacija (Mejniki, zasnova in načrt dela)
+Podrobna dokumentacija zasnove, primerov uporabe, mockupov, podatkovnega modela ter načrta razvoja je na voljo v mapi `dokumentacija/` ter v zbirnem Word dokumentu:
 
 * 📄 **[Zbirni dokument zasnove (Word .docx)](dokumentacija/Dokumentacija_zasnove_TerraPulse.docx)**
-* 📐 **[Izmenljiv Draw.io diagram primerov uporabe (.drawio)](dokumentacija/TerraPulse_DPU.drawio)**
 * 📘 **[1. Podrobnejši opis projekta in glavnih funkcionalnosti](dokumentacija/01_opis_projekta_in_funkcionalnosti.md)**
-* 📗 **[2. Diagram primerov uporabe in ključni uporabniški scenariji](dokumentacija/02_primeri_uporabe_in_scenariji.md)**
+* 📗 **[2. Diagram primerov uporabe in ključni uporabniški scenariji](dokumentacija/02_primeri_uporabe_in_scenariji.md)** *(slika: [use_case_diagram.png](dokumentacija/images/use_case_diagram.png))*
 * 📙 **[3. Mockupi najpomembnejših zaslonov in predvidena navigacija](dokumentacija/03_mockupi_in_navigacija.md)**
 * 📕 **[4. Začetni podatkovni model, TimescaleDB optimizacija in arhitektura](dokumentacija/04_podatkovni_model_in_arhitektura.md)**
+* 🗓️ **[5. Načrt razvoja, mejniki in razdelitev odgovornosti](dokumentacija/05_nacrt_razvoja_in_odgovornosti.md)**
 * 🐧 **[Proxmox LXC skripta za namestitev (Mosquitto + Telegraf + TimescaleDB)](infra/proxmox_create_terrapulse_lxc.sh)**
-

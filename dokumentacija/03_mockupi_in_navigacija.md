@@ -1,6 +1,6 @@
 # 3. Mockupi/prototipi najpomembnejših zaslonov in predvidena navigacija
 
-> **Predmet:** Vseprisotni sistemi (FERI, Univerza v Mariboru)  
+> **Predmet:** Razvoj vseprisotnih informacijskih rešitev (RVIR · 2026/2027), FERI, Univerza v Mariboru  
 > **Projekt:** TerraPulse – Pametni sistem za spremljanje rasti in zdravja rastlin  
 > **Člani ekipe:**  
 > * **Luka Grobelnik (Vodja projekta)**  
@@ -14,6 +14,8 @@
 Spodnja slika prikazuje vseh šest ključnih zaslonov mobilne aplikacije **TerraPulse**, zasnovanih z minimalističnim, zračnim in preglednim vmesnikom (brez prenasičenosti s podatki):
 
 ![Skupni pregled mockupov TerraPulse](images/mockups_terrapulse.png)
+
+> **Opomba h konceptualnim mockupom:** Vizualni mockupi iz orodja Google Stitch služijo kot slogovna in postavitvena referenca (*Botanical Precision*). Nekateri dekorativni napisi v prototipih (npr. `BLE Ready`, `BLE 5.2`, `Bluetooth & BLE Mesh` ter `72°F` na 2. zaslonu) so nadomestni elementi prototipa — dejanska tehnična izvedba aplikacije TerraPulse uporablja povezovanje senzorja prek **Wi-Fi dostopne točke (`SOILSENS-V5W`) + domačega 2,4 GHz Wi-Fi-ja + MQTT** ter enotno prikazuje metrične enote (**`°C`**).
 
 ---
 

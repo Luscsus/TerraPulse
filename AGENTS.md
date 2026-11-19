@@ -1,6 +1,6 @@
 # TerraPulse — Agent & Developer Guide
 
-> **Course:** Vseprisotni sistemi (FERI, Univerza v Mariboru)  
+> **Course:** Razvoj vseprisotnih informacijskih rešitev (RVIR · 2026/2027), FERI, Univerza v Mariboru  
 > **Team:** Luka Grobelnik (Vodja projekta), Jan Mrkonjič, Matija Gusel
 
 This repository contains the **TerraPulse** smart IoT plant monitoring system. Use this guide (and the scoped `AGENTS.md` files inside `app/` and `backend/`) when designing, planning, or implementing features.

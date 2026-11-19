@@ -1,6 +1,6 @@
 # 4. Začetni podatkovni model, arhitektura in načrtovane tehnologije
 
-> **Predmet:** Vseprisotni sistemi (FERI, Univerza v Mariboru)  
+> **Predmet:** Razvoj vseprisotnih informacijskih rešitev (RVIR · 2026/2027), FERI, Univerza v Mariboru  
 > **Projekt:** TerraPulse – Pametni sistem za spremljanje rasti in zdravja rastlin  
 > **Člani ekipe:**  
 > * **Luka Grobelnik (Vodja projekta)**  
@@ -117,7 +117,7 @@ Da lahko v sistem TerraPulse vključimo katerikoli tip rastlinskega senzorja, je
 
 # Izhodni vtičnik: neposreden zapis v TimescaleDB hipertabelo plant_metrics
 [[outputs.postgresql]]
-  connection = "host=timescaledb user=postgres password=terrapulse dbname=terrapulse sslmode=disable"
+  connection = "host=timescaledb user=postgres password=${DB_PASS} dbname=terrapulse sslmode=disable"
   tags_as_foreign_keys = false
 ```
 

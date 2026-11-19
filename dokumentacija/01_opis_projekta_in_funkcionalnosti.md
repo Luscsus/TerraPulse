@@ -1,6 +1,6 @@
 # 1. Podrobnejši opis projekta in glavnih funkcionalnosti
 
-> **Predmet:** Vseprisotni sistemi (FERI, Univerza v Mariboru)  
+> **Predmet:** Razvoj vseprisotnih informacijskih rešitev (RVIR · 2026/2027), FERI, Univerza v Mariboru  
 > **Projekt:** TerraPulse – Pametni sistem za spremljanje rasti in zdravja rastlin  
 > **Člani ekipe:**  
 > * **Luka Grobelnik (Vodja projekta)**  

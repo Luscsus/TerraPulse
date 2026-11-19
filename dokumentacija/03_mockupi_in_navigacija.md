@@ -105,10 +105,10 @@ Spodnji diagram prikazuje celoten navigacijski tok med vsemi šestimi zasloni ap
 flowchart TD
     Start(["Zagon aplikacije TerraPulse"]) --> CheckHive{"Ali ima uporabnik v bazi Hive<br/>že dodano kakšno rastlino?"}
 
-    CheckHive -->|Ne (0 rastlin)| S1["1. Prazen vrt (Empty Garden)<br/>- Sporočilo & ilustracija lončka<br/>- Gumb '+ Add Your First Plant'"]
-    CheckHive -->|Da (>= 1 rastlina)| S2["2. 3D Virtualni vrt (Garden)<br/>- 3D ambientni prikaz rastlin<br/>- Pasica dnevnega niza (Streak)"]
+    CheckHive -->|"Ne (0 rastlin)"| S1["1. Prazen vrt (Empty Garden)<br/>- Sporočilo & ilustracija lončka<br/>- Gumb '+ Add Your First Plant'"]
+    CheckHive -->|"Da (>= 1 rastlina)"| S2["2. 3D Virtualni vrt (Garden)<br/>- 3D ambientni prikaz rastlin<br/>- Pasica dnevnega niza (Streak)"]
 
-    S1 -->|Klik na '+ Add Your First Plant'| S5
+    S1 -->|"Klik na '+ Add Your First Plant'"| S5
 
     subgraph BottomNav["Spodnja navigacijska vrstica (Bottom Navigation Bar)"]
         S2
@@ -117,7 +117,7 @@ flowchart TD
         S6["6. Nastavitve in Profil (Settings)<br/>- Lokalni profil (Hive) & Firebase Sync<br/>- Odjava in izbris računa<br/>- Stikala za potisna obvestila"]
     end
 
-    S2 -->|Klik na rastlino v 3D vrtu| S4["4. Podrobnosti rastline (Plant Details)<br/>- Meritve vs. OpenPlantbook pragovi<br/>- Zgodovinski grafi (24h / 7d / 30d)"]
-    S3 -->|Klik na rastlino na seznamu| S4
-    S5 -->|Klik na 'Save Plant to Garden'| S2
+    S2 -->|"Klik na rastlino v 3D vrtu"| S4["4. Podrobnosti rastline (Plant Details)<br/>- Meritve vs. OpenPlantbook pragovi<br/>- Zgodovinski grafi (24h / 7d / 30d)"]
+    S3 -->|"Klik na rastlino na seznamu"| S4
+    S5 -->|"Klik na 'Save Plant to Garden'"| S2
 ```
